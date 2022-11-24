@@ -18,10 +18,10 @@ jobs:
           path: main
 
       - name: Update Processor Docs
-        working-directory: main
+        working-directory: main/Scripts
         # env:
         #   PA_TOKEN: ${{ secrets.PAT_SECRET }}
-        run: python3 ./Scripts/generate_processor_docs.py
+        run: python3 generate_processor_docs.py "0.0.0"
 
       # - name: Commit index
       #   working-directory: main
