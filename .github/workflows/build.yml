@@ -17,6 +17,10 @@ jobs:
         with:
           path: main
 
+      - name: Install Python Requirements
+        working-directory: main
+        run: python3 -m pip install -r requirements.txt
+
       - name: Update Processor Docs
         working-directory: main/Scripts
         # env:
