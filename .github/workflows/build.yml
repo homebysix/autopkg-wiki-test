@@ -22,14 +22,11 @@ jobs:
         run: python3 -m pip install -r requirements.txt
         continue-on-error: true
 
-      - name: Configure Git
-        working-directory: main
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-
       - name: Update Processor Docs
         working-directory: main/Scripts
         # env:
         #   PA_TOKEN: ${{ secrets.PAT_SECRET }}
-        run: python3 generate_processor_docs.py "0.0.0"
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          python3 generate_processor_docs.py "0.0.0"
