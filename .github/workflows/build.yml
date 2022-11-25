@@ -27,6 +27,6 @@ jobs:
         # env:
         #   PA_TOKEN: ${{ secrets.PAT_SECRET }}
         run: |
-          git config user.name "GitHub Actions Bot"
-          git config user.email "<>"
+          git config --global user.name github-actions
+          git config --global user.email github-actions@github.com
           python3 generate_processor_docs.py "0.0.0"
