@@ -2,9 +2,8 @@ name: build
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
+  create:
+    ref_type: tag
 
 jobs:
   build:
@@ -38,4 +37,4 @@ jobs:
         working-directory: main/Scripts
         # env:
         #   PA_TOKEN: ${{ secrets.PAT_SECRET }}
-        run: python3 generate_processor_docs.py -d ../../wiki -y "0.0.0"
+        run: python3 generate_processor_docs.py -d ../../wiki -y "$GITHUB_REF"
