@@ -32,4 +32,4 @@ jobs:
         working-directory: main/Scripts
         # env:
         #   PA_TOKEN: ${{ secrets.PAT_SECRET }}
-        run: echo "push\n" | python3 generate_processor_docs.py "0.0.0"
+        run: python3 generate_processor_docs.py "0.0.0"
