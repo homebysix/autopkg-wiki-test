@@ -17,6 +17,12 @@ jobs:
         with:
           path: main
 
+      - name: Clone wiki
+        uses: actions/checkout@v2
+        with:
+          repository: homebysix/autopkg-wiki-test.wiki
+          path: wiki
+
       - name: Install Python Requirements
         working-directory: main
         run: python3 -m pip install -r requirements.txt
@@ -32,4 +38,4 @@ jobs:
         working-directory: main/Scripts
         # env:
         #   PA_TOKEN: ${{ secrets.PAT_SECRET }}
-        run: python3 generate_processor_docs.py -y "0.0.0"
+        run: python3 generate_processor_docs.py -d ../../wiki -y "0.0.0"
