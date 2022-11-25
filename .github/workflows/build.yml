@@ -37,4 +37,4 @@ jobs:
         working-directory: main/Scripts
         # env:
         #   PA_TOKEN: ${{ secrets.PAT_SECRET }}
-        run: python3 generate_processor_docs.py -d ../../wiki -y "$GITHUB_REF"
+        run: python3 generate_processor_docs.py -d ../../wiki -y "$(echo $GITHUB_REF | awk -F/ '{print $NF}')"
