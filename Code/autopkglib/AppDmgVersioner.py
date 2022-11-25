@@ -27,7 +27,7 @@ __all__ = ["AppDmgVersioner"]
 
 class AppDmgVersioner(DmgMounter):
     # we dynamically set the docstring from the description (DRY), so:
-    description = "Does some really neat things."
+    description = "Extracts bundle ID and version of app inside dmg."
     input_variables = {
         "dmg_path": {
             "required": True,
