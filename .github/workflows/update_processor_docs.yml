@@ -1,12 +1,8 @@
-name: build
+name: Update processor docs
 
 on:
-  workflow_dispatch:
   create:
     ref_type: tag
-  push:
-    branches:
-      - main
 
 jobs:
   build:
@@ -25,7 +21,7 @@ jobs:
           repository: homebysix/autopkg-wiki-test.wiki
           path: wiki
 
-      - name: Install Python Requirements
+      - name: Install Python requirements
         working-directory: main
         run: python3 -m pip install appdirs
         continue-on-error: true
@@ -36,8 +32,6 @@ jobs:
           git config --global user.name github-actions
           git config --global user.email github-actions@github.com
 
-      - name: Update Processor Docs
+      - name: Update processor docs
         working-directory: main/Scripts
-        # env:
-        #   PA_TOKEN: ${{ secrets.PAT_SECRET }}
         run: python3 generate_processor_docs.py -d ../../wiki -y "${GITHUB_REF##*/}"
