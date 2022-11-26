@@ -88,11 +88,12 @@ def clone_wiki_dir(clone_dir=None):
     cloned. The path can be specified with 'clone_dir', otherwise a
     temporary directory will be used."""
 
-    if not clone_dir:
-        outdir = mkdtemp()
-    else:
+    if clone_dir:
         outdir = clone_dir
-    run_git(["clone", "https://github.com/autopkg/autopkg.wiki", outdir])
+    else:
+        outdir = mkdtemp()
+    if not os.path.isdir(os.path.join(outdir, ".git")):
+        run_git(["clone", "https://github.com/autopkg/autopkg.wiki", outdir])
     return os.path.abspath(outdir)
 
 
