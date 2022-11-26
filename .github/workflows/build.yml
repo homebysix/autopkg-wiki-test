@@ -4,6 +4,9 @@ on:
   workflow_dispatch:
   create:
     ref_type: tag
+  push:
+    branches:
+      - main
 
 jobs:
   build:
