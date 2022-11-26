@@ -83,6 +83,19 @@ def generate_markdown(dict_data, indent=0):
     return string
 
 
+def clone_wiki_dir(clone_dir=None):
+    """Clone the AutoPkg GitHub repo and return the path to where it was
+    cloned. The path can be specified with 'clone_dir', otherwise a
+    temporary directory will be used."""
+
+    if not clone_dir:
+        outdir = mkdtemp()
+    else:
+        outdir = clone_dir
+    run_git(["clone", "https://github.com/autopkg/autopkg.wiki", outdir])
+    return os.path.abspath(outdir)
+
+
 def indent_length(line_str):
     """Returns the indent length of a given string as an integer."""
     return len(line_str) - len(line_str.lstrip())
@@ -169,8 +182,15 @@ def main(_):
     # Grab the version for the commit log.
     version = arguments[0]
 
-    output_dir = options.directory
-    print(f"Wiki clone path: {output_dir}")
+    print("Cloning AutoPkg wiki...")
+    print()
+
+    if options.directory:
+        output_dir = clone_wiki_dir(clone_dir=options.directory)
+    else:
+        output_dir = clone_wiki_dir()
+
+    print(f"Cloned to {output_dir}")
     print()
     print()
 
