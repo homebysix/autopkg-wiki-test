@@ -25,10 +25,10 @@ jobs:
           repository: homebysix/autopkg-wiki-test.wiki
           path: wiki
 
-      # - name: Install Python Requirements
-      #   working-directory: main
-      #   run: python3 -m pip install -r requirements.txt
-      #   continue-on-error: true
+      - name: Install Python Requirements
+        working-directory: main
+        run: python3 -m pip install appdirs
+        continue-on-error: true
 
       - name: Configure Git
         working-directory: main
